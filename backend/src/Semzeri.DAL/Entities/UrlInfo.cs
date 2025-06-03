@@ -11,4 +11,6 @@ public class UrlInfo
     public required string OriginalUrl { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    public required string UserEmail { get; set; } = string.Empty;
 }
