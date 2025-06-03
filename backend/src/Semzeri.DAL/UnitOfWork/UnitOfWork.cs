@@ -1,9 +1,9 @@
 ﻿namespace Semzeri.DAL.UnitOfWork;
 
-public class UnitOfWork : IUnitOfWork
+public class UnitOfWork (ApplicationDbContext context) : IUnitOfWork
 {
-    public Task SaveChangesAsync()
+    public async Task SaveChangesAsync()
     {
-        throw new NotImplementedException();
+        await context.SaveChangesAsync();
     }
 }
