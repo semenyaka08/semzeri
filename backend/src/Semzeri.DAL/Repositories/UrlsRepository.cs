@@ -36,7 +36,7 @@ public class UrlsRepository : IUrlsRepository
         throw new NotImplementedException();
     }
 
-    public Task<(IEnumerable<UrlInfo>, int)> GetUrlsAsync(UrlsGetRequest request, string userEmail)
+    public Task<(IEnumerable<UrlInfo>, int)> GetUrlsAsync(UrlsDalGetRequest request, string userEmail)
     {
         throw new NotImplementedException();
     }
