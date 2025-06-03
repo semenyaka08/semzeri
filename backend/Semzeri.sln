@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Semzeri.API", "src\Semzeri.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Semzeri.BusinessLogic", "src\Semzeri.BusinessLogic\Semzeri.BusinessLogic.csproj", "{F43481E0-F7DA-4B19-85CA-DDA88FAFD263}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Semzer.DAL", "src\Semzer.DAL\Semzer.DAL.csproj", "{72D6B9C2-F17F-45B5-96FF-216B90723134}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Semzeri.DAL", "src\Semzeri.DAL\Semzeri.DAL.csproj", "{72D6B9C2-F17F-45B5-96FF-216B90723134}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Semzeri.BusinessLogic.Tests", "tests\Semzeri.BusinessLogic.Tests\Semzeri.BusinessLogic.Tests.csproj", "{2C494190-FEC3-46FA-961A-C9F69E8F599F}"
 EndProject
