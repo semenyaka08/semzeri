@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Semzeri.BusinessLogic\Semzeri.BusinessLogic.csproj" />
       <ProjectReference Include="..\Semzeri.DAL\Semzeri.DAL.csproj" />
     </ItemGroup>
 
