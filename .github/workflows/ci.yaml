@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - 5-set-up-ci-pipeline-for-backend-project
   workflow_dispatch:
 
 jobs:
