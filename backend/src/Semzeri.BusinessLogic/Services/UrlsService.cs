@@ -32,11 +32,11 @@ public class UrlsService (IUrlsRepository urlsRepository, IUrlShortenerService u
 
     public async Task<string> GetUrlByCodeAsync(string code)
     {
-        var urlInfo = urlsRepository.GetUrlByCodeAsync(code);
+        var urlInfo = await urlsRepository.GetUrlByCodeAsync(code);
 
         if (urlInfo is null) throw new NotFoundException($"Resource type: {nameof(UrlInfo)} with code: {code} does not exist");
         
-        return urlInfo.ToString();
+        return urlInfo.OriginalUrl;
     }
 
     public async Task<UrlGetResponse> GetUrlByIdAsync(Guid id, string userEmail)
