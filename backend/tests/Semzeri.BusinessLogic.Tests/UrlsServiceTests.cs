@@ -134,7 +134,6 @@ public class UrlsServiceTests
     {
         // Arrange
         var addRequest = new GenerateUrlRequest { OriginalUrl = "https://example.com" };
-        var originalUrl = "https://example.com";
         var userEmail = "test@test.com";
         var code = "shortCode";
         var schema = "https";
@@ -166,7 +165,6 @@ public class UrlsServiceTests
     {
         // Arrange
         var addRequest = new GenerateUrlRequest { OriginalUrl = "https://example.com" };
-        var originalUrl = "https://example.com";
         var userEmail = "test@test.com";
         var code = "shortCode";
         var schema = "https";

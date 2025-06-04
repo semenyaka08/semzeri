@@ -59,4 +59,17 @@ public class UrlShortenerServiceTests
         // Assert
         result.Should().HaveLength(UrlShorteningConfig.NumberOfCharsInShortenedLink);
     }
+    
+    [Fact]
+    public async Task GenerateUniqueCode_GeneratesCodeWithValidChars()
+    {
+        // Arrange
+        _codeCacheService.IsCodeUnique(Arg.Any<string>()).Returns(true);
+
+        // Act
+        var result = await _sut.GenerateUniqueCode();
+
+        // Assert
+        result.All(c => UrlShorteningConfig.Alphabet.Contains(c)).Should().BeTrue();
+    }
 }
