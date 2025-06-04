@@ -4,7 +4,7 @@ using Semzeri.DAL.DTOs.Urls;
 using Semzeri.DAL.Entities;
 using Semzeri.DAL.Repositories.Interfaces;
 using Semzeri.DAL.UnitOfWorkPattern;
-
+// comment for ci
 namespace Semzeri.DAL.Repositories;
 
 public class UrlsRepository (ApplicationDbContext context, IUnitOfWork unitOfWork) : IUrlsRepository
