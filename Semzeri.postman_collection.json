@@ -1,0 +1,313 @@
+{
+	"info": {
+		"_postman_id": "64d72d94-2ec1-46bc-8d17-f7e11ac53baf",
+		"name": "Semzeri",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36311152"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"Vlad.Berdichevskyi@gmail.com\",\r\n    \"password\": \"Pa$$w0rd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6010/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6010",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"Vlad.Berdichevskyi@gmail.com\",\r\n    \"password\": \"Pa$$w0rd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6010/api/login?useCookies=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6010",
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "useCookies",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:6010/api/account/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6010",
+					"path": [
+						"api",
+						"account",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Urls",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:6010/api/admin/urls",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6010",
+					"path": [
+						"api",
+						"admin",
+						"urls"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "pageNumber",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Algorith",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"New Algo\",\r\n    \"description\": \"algo desc225\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6010/api/algorithm",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6010",
+					"path": [
+						"api",
+						"algorithm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Algorithm",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:6010/api/algorithm",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6010",
+					"path": [
+						"api",
+						"algorithm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Url",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"OriginalUrl\": \"https://campus.epam.ua/ua/blog/109\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6010/api/urls",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6010",
+					"path": [
+						"api",
+						"urls"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Url By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:6010/api/urls/9e78bd1e-18d5-49be-9f12-7d807f005662",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6010",
+					"path": [
+						"api",
+						"urls",
+						"9e78bd1e-18d5-49be-9f12-7d807f005662"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Urls",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6010/api/urls?SortDirection=asc&SortItem=date",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6010",
+					"path": [
+						"api",
+						"urls"
+					],
+					"query": [
+						{
+							"key": "SortDirection",
+							"value": "asc"
+						},
+						{
+							"key": "PageSize",
+							"value": "12",
+							"disabled": true
+						},
+						{
+							"key": "PageNumber",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "PageSize",
+							"value": "4",
+							"disabled": true
+						},
+						{
+							"key": "SearchParam",
+							"value": "8db5a90e-7752-4c08-8b0e-fa5dfe0153b2",
+							"disabled": true
+						},
+						{
+							"key": "SortItem",
+							"value": "date"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Url",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:6010/api/urls/BFB73D04-9856-471C-B95E-9EDF7DAB10D2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6010",
+					"path": [
+						"api",
+						"urls",
+						"BFB73D04-9856-471C-B95E-9EDF7DAB10D2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
