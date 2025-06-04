@@ -42,7 +42,7 @@ public class UrlsRepository (ApplicationDbContext context, IUnitOfWork unitOfWor
         return await context.UrlInfos.Select(z => z.Code).ToListAsync();
     }
 
-    public async Task<(IEnumerable<UrlInfo>, int)> GetUrlsAsync(UrlsGetRequest request, string userEmail)
+    public async Task<(IEnumerable<UrlInfo>, int)> GetUrlsAsync(UrlsDalGetRequest request, string userEmail)
     {
         var query = context.UrlInfos.Where(z => (request.SearchParam == null
                                                  || z.Id.ToString() == request.SearchParam)
