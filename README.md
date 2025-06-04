@@ -13,7 +13,7 @@ Semzeri is a Backend URL shortening service built with **C#**, **ASP.NET Core**,
 - **Backend**: ASP.NET Core with Entity Framework Core for database management.
 - **Database**: Microsoft SQL Server.
 
-- ## Getting Started
+## Getting Started
 
 ### Prerequisites
 
