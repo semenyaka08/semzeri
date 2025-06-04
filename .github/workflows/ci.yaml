@@ -3,8 +3,11 @@ name: Build .NET Backend
 on:
   push:
     branches:
-      - master
+      - main
       - 5-set-up-ci-pipeline-for-backend-project
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
