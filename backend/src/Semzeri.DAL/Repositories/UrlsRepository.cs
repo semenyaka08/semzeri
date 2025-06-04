@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using Semzeri.DAL.DTOs.Admin;
 using Semzeri.DAL.DTOs.Urls;
 using Semzeri.DAL.Entities;
 using Semzeri.DAL.Repositories.Interfaces;
@@ -61,7 +62,20 @@ public class UrlsRepository (ApplicationDbContext context, IUnitOfWork unitOfWor
 
         await unitOfWork.SaveChangesAsync();
     }
-    
+
+    public async Task<(IEnumerable<UrlInfo>, int)> GetAllUrlsAsync(AdminDalUrlsGetRequest request)
+    {
+        var query = context.UrlInfos.Where(z => request.SearchParam == null
+                                                || z.UserEmail.Contains(request.SearchParam)
+                                                || z.Id.ToString() == request.SearchParam);
+
+        int totalCount = await query.CountAsync();
+        
+        query = request.SortDirection == "asc" ? query.OrderBy(GetSelectorKey(request.SortBy)) : query.OrderByDescending(GetSelectorKey(request.SortBy));
+
+        return (await query.Skip((request.PageNumber - 1) * request.PageSize).Take(request.PageSize).ToListAsync(), totalCount);
+    }
+
     private Expression<Func<UrlInfo, object>> GetSelectorKey(string? sortItem)
     {
         return sortItem switch

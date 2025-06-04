@@ -1,4 +1,5 @@
 ﻿using Semzeri.BusinessLogic.Common;
+using Semzeri.BusinessLogic.DTOs.Admin;
 using Semzeri.BusinessLogic.DTOs.URLs;
 
 namespace Semzeri.BusinessLogic.Services.Interfaces;
@@ -9,9 +10,11 @@ public interface IUrlsService
 
     Task<string> GetUrlByCodeAsync(string code);
 
-    Task<UrlGetResponse> GetUrlByIdAsync(Guid id, string userEmail);
+    Task<UrlGetResponse> GetUrlByIdAsync(Guid id, string userEmail, bool isAdmin);
 
     Task<PageResult<UrlGetResponse>> GetUrlsAsync(UrlsGetRequest request, string userEmail);
 
-    Task DeleteUrlAsync(Guid id, string userEmail);
+    Task DeleteUrlAsync(Guid id, string userEmail, bool isAdmin);
+
+    public Task<PageResult<UrlGetResponse>> GetAllUrlsAsync(AdminUrlsGetRequest request);
 }

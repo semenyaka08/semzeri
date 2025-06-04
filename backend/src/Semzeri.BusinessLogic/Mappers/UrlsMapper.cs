@@ -1,4 +1,6 @@
-﻿using Semzeri.BusinessLogic.DTOs.URLs;
+﻿using Semzeri.BusinessLogic.DTOs.Admin;
+using Semzeri.BusinessLogic.DTOs.URLs;
+using Semzeri.DAL.DTOs.Admin;
 using Semzeri.DAL.DTOs.Urls;
 using Semzeri.DAL.Entities;
 
@@ -33,6 +35,18 @@ public static class UrlsMapper
     public static UrlsDalGetRequest ToDalDto(this UrlsGetRequest request)
     {
         return new UrlsDalGetRequest
+        {
+            PageSize = request.PageSize,
+            PageNumber = request.PageNumber,
+            SortBy = request.SortBy,
+            SortDirection = request.SortDirection,
+            SearchParam = request.SearchParam
+        };
+    }
+    
+    public static AdminDalUrlsGetRequest ToDalDto(this AdminUrlsGetRequest request)
+    {
+        return new AdminDalUrlsGetRequest
         {
             PageSize = request.PageSize,
             PageNumber = request.PageNumber,

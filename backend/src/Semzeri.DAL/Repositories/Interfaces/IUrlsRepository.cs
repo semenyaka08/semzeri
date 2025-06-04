@@ -1,4 +1,5 @@
-﻿using Semzeri.DAL.DTOs.Urls;
+﻿using Semzeri.DAL.DTOs.Admin;
+using Semzeri.DAL.DTOs.Urls;
 using Semzeri.DAL.Entities;
 
 namespace Semzeri.DAL.Repositories.Interfaces;
@@ -20,4 +21,6 @@ public interface IUrlsRepository
     Task<(IEnumerable<UrlInfo>, int)> GetUrlsAsync(UrlsDalGetRequest request, string userEmail);
 
     Task DeleteUrlAsync(UrlInfo urlInfo);
+    
+    Task<(IEnumerable<UrlInfo>, int)> GetAllUrlsAsync(AdminDalUrlsGetRequest request);
 }

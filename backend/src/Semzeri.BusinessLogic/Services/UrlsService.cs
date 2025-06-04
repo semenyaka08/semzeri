@@ -1,4 +1,5 @@
 using Semzeri.BusinessLogic.Common;
+using Semzeri.BusinessLogic.DTOs.Admin;
 using Semzeri.BusinessLogic.DTOs.URLs;
 using Semzeri.BusinessLogic.Exceptions;
 using Semzeri.BusinessLogic.Mappers;
@@ -37,14 +38,14 @@ public class UrlsService (IUrlsRepository urlsRepository, IUrlShortenerService u
         return urlInfo.OriginalUrl;
     }
 
-    public async Task<UrlGetResponse> GetUrlByIdAsync(Guid id, string userEmail)
+    public async Task<UrlGetResponse> GetUrlByIdAsync(Guid id, string userEmail, bool isAdmin)
     {
         var url = await urlsRepository.GetUrlByIdAsync(id);
 
         if (url is null)
             throw new NotFoundException($"Resource type: {nameof(UrlInfo)} with id: {id} does not exist");
 
-        if (url.UserEmail != userEmail)
+        if (!isAdmin && url.UserEmail != userEmail)
             throw new ForbiddenException("This operation is forbidden for you!");
         
         return url.ToDto();
@@ -59,16 +60,25 @@ public class UrlsService (IUrlsRepository urlsRepository, IUrlShortenerService u
         return new PageResult<UrlGetResponse>(mappedUrls, totalCount, request.PageSize, request.PageNumber);
     }
 
-    public async Task DeleteUrlAsync(Guid id, string userEmail)
+    public async Task DeleteUrlAsync(Guid id, string userEmail, bool isAdmin)
     {
         var url = await urlsRepository.GetUrlByIdAsync(id);
 
         if (url is null)
             throw new NotFoundException($"Resource type: {nameof(UrlInfo)} with id: {id} does not exist");
 
-        if (url.UserEmail != userEmail)
+        if (!isAdmin && url.UserEmail != userEmail)
             throw new ForbiddenException("This operation is forbidden for you!");
         
         await urlsRepository.DeleteUrlAsync(url);
+    }
+
+    public async Task<PageResult<UrlGetResponse>> GetAllUrlsAsync(AdminUrlsGetRequest request)
+    {
+        var (urls, totalCount) = await urlsRepository.GetAllUrlsAsync(request.ToDalDto());
+
+        var mappedUrls = urls.Select(x=>x.ToDto());
+
+        return new PageResult<UrlGetResponse>(mappedUrls, totalCount, request.PageSize, request.PageNumber);
     }
 }
