@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Semzeri.API.Extensions;
 using Semzeri.API.Middlewares;
+using Semzeri.BusinessLogic.Extensions;
 using Semzeri.BusinessLogic.Services.Interfaces;
 using Semzeri.DAL;
 using Semzeri.DAL.Entities;
@@ -11,7 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddApi()
-    .AddDataAccess(builder.Configuration);
+    .AddDataAccess(builder.Configuration)
+    .AddBusiness();
 
 var app = builder.Build();
 
@@ -31,7 +34,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGet("/{code}", async (string code, IUrlsService urlsService) =>
+app.MapGet("/{code}", async (string code, [FromServices] IUrlsService urlsService) =>
 {
     var originalUrl = await urlsService.GetUrlByCodeAsync(code);
 

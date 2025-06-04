@@ -7,6 +7,8 @@ using Semzeri.DAL;
 
 namespace Semzeri.API.Controllers;
 
+[ApiController]
+[Route("api/[controller]")]
 public class UrlsController(IUrlsService urlsService) : ControllerBase
 {
     [Authorize]

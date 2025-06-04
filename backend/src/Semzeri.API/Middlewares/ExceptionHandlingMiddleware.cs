@@ -22,6 +22,12 @@ public class ExceptionHandlingMiddleware : IMiddleware
 
             await context.Response.WriteAsync(exception.Message);
         }
+        catch (ForbiddenException exception)
+        {
+            context.Response.StatusCode = 403;
+            
+            await context.Response.WriteAsync(exception.Message);
+        }
         catch (Exception ex)
         {
             context.Response.StatusCode = 500;

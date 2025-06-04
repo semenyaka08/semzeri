@@ -6,6 +6,8 @@ using Semzeri.DAL;
 
 namespace Semzeri.API.Controllers;
 
+[ApiController]
+[Route("api/[controller]")]
 public class AdminController (IUrlsService urlsService) : ControllerBase
 {
     [HttpGet("urls")]
