@@ -1,4 +1,7 @@
-﻿using Semzeri.API.Middlewares;
+﻿using Microsoft.AspNetCore.Identity;
+using Semzeri.API.Middlewares;
+using Semzeri.DAL;
+using Semzeri.DAL.Entities;
 
 namespace Semzeri.API.Extensions;
 
@@ -10,6 +13,10 @@ public static class ServiceCollectionExtension
         services.AddSwaggerGen();
 
         services.AddScoped<ExceptionHandlingMiddleware>();
+        
+        services.AddAuthorization();
+        services.AddIdentityApiEndpoints<AppUser>()
+            .AddEntityFrameworkStores<ApplicationDbContext>();
         
         return services;
     }
