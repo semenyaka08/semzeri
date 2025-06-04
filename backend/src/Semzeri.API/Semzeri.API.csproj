@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>dd54de89-a3b8-4ba1-84f9-2c5403a2636f</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,6 +19,12 @@
     <ItemGroup>
       <ProjectReference Include="..\Semzeri.BusinessLogic\Semzeri.BusinessLogic.csproj" />
       <ProjectReference Include="..\Semzeri.DAL\Semzeri.DAL.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

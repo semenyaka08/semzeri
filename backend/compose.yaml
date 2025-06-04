@@ -1,0 +1,30 @@
+﻿services:
+  semzeri.api:
+    image: semzeri.api
+    build:
+      context: .
+      dockerfile: src/Semzeri.API/Dockerfile
+    ports:
+      - "6010:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: 8080
+      ConnectionStrings__DefaultConnection: Server = semzeriDb;Database = SemzeriDb;User Id=sa;Password=Semzeri0805*;Encrypt=True;TrustServerCertificate=true
+    depends_on:
+      semzeriDb:
+        condition: service_started  
+
+  semzeriDb:
+    image: mcr.microsoft.com/mssql/server
+    container_name: semzeriDb
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Semzeri0805*
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_storage:/var/opt/mssql
+        
+volumes:
+  mssql_storage:
