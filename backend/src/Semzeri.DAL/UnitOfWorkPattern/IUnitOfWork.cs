@@ -1,4 +1,4 @@
-﻿namespace Semzeri.DAL.UnitOfWork;
+﻿namespace Semzeri.DAL.UnitOfWorkPattern;
 
 public interface IUnitOfWork 
 {
