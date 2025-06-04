@@ -39,4 +39,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: backend-app
-          path: ./publish
+          path: backend/publish
