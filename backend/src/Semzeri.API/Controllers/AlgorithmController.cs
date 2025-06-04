@@ -15,7 +15,7 @@ public class AlgorithmController(IAlgorithmService algorithmService) : Controlle
     public async Task<IActionResult> UpdateAlgorithm([FromBody] UpdateAlgorithmRequest request)
     {
         await algorithmService.UpdateAlgorithm(request);
-
+        
         return Ok();
     }
     

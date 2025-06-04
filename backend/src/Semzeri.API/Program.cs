@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Semzeri.API.Extensions;
 using Semzeri.API.Middlewares;
+using Semzeri.BusinessLogic.Services.Interfaces;
 using Semzeri.DAL;
 using Semzeri.DAL.Entities;
 using Semzeri.DAL.Extensions;
@@ -29,6 +30,13 @@ if (app.Environment.IsDevelopment())
 }
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapGet("/{code}", async (string code, IUrlsService urlsService) =>
+{
+    var originalUrl = await urlsService.GetUrlByCodeAsync(code);
+
+    return Results.Redirect(originalUrl);
+});
 
 app.MapControllers();
 app.MapGroup("api").MapIdentityApi<AppUser>();
