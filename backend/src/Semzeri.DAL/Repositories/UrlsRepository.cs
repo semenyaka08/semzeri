@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Semzeri.DAL.DTOs.Urls;
 using Semzeri.DAL.Entities;
 using Semzeri.DAL.Repositories.Interfaces;
-using Semzeri.DAL.UnitOfWork;
+using Semzeri.DAL.UnitOfWorkPattern;
 
 namespace Semzeri.DAL.Repositories;
 
