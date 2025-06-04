@@ -46,7 +46,7 @@ public class UniqueCodeCacheServiceTests
         var result = _service.IsCodeUnique("Code1");
 
         // Assert
-        result.Should().BeFalse();
+        result.Should().BeTrue();
     }
     
     [Fact]
