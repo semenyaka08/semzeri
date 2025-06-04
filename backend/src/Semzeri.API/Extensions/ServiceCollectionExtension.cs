@@ -16,6 +16,7 @@ public static class ServiceCollectionExtension
         
         services.AddAuthorization();
         services.AddIdentityApiEndpoints<AppUser>()
+            .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
         
         return services;
