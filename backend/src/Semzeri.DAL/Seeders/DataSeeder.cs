@@ -32,6 +32,15 @@ public class DataSeeder(ApplicationDbContext context, UserManager<AppUser> userM
                 await userManager.CreateAsync(adminUser, password);
                 await userManager.AddToRoleAsync(adminUser, ApplicationRoles.Admin);
             }
+            
+            var algorithm = GetAlgorithm();
+            
+            if (!await context.Algorithms.AnyAsync())
+            {
+                await context.Algorithms.AddAsync(algorithm);
+            }
+            
+            await context.SaveChangesAsync();
         }
     }
     
@@ -46,5 +55,16 @@ public class DataSeeder(ApplicationDbContext context, UserManager<AppUser> userM
         string password = configuration["AdminData:Password"]!;
         
         return (adminUser, password);
+    }
+
+    private Algorithm GetAlgorithm()
+    {
+        var algorithm = new Algorithm
+        {
+            Title = "Semzeri Algorithm",
+            Description = "This is a collision-resistant random code generator for a URL shortening service (similar to bit.ly or tinyurl). The algorithm generates short, unique alphanumeric codes that serve as identifiers for shortened URLs."
+        };
+        
+        return algorithm;
     }
 }
