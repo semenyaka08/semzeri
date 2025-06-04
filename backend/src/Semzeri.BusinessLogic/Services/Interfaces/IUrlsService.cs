@@ -9,9 +9,9 @@ public interface IUrlsService
 
     Task<string> GetUrlByCodeAsync(string code);
 
-    Task<UrlGetResponse> GetUrlByIdAsync(Guid id, string userEmail, bool isAdmin);
+    Task<UrlGetResponse> GetUrlByIdAsync(Guid id, string userEmail);
 
     Task<PageResult<UrlGetResponse>> GetUrlsAsync(UrlsGetRequest request, string userEmail);
 
-    Task DeleteUrlAsync(Guid id, string userEmail, bool isAdmin);
+    Task DeleteUrlAsync(Guid id, string userEmail);
 }
