@@ -1,4 +1,6 @@
-﻿namespace Semzeri.API.Extensions;
+﻿using Semzeri.API.Middlewares;
+
+namespace Semzeri.API.Extensions;
 
 public static class ServiceCollectionExtension
 {
@@ -7,6 +9,8 @@ public static class ServiceCollectionExtension
         services.AddControllers();
         services.AddSwaggerGen();
 
+        services.AddScoped<ExceptionHandlingMiddleware>();
+        
         return services;
     }
 }
