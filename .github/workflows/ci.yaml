@@ -62,12 +62,15 @@ jobs:
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-          
+
       - name: Deploy to Azure Container App
-        uses: azure/container-apps-deploy-action@v1
-        with:
-          imageToDeploy: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_APP_NAME }}:${{ github.sha }}
-          resourceGroup: ${{ env.RESOURCE_GROUP }}
-          containerAppName: ${{ env.CONTAINER_APP_NAME }}
-          environmentVariables: |
-            ASPNETCORE_ENVIRONMENT=Development
+        run: |
+          az containerapp update \
+            --name ${{ env.CONTAINER_APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_APP_NAME }}:${{ github.sha }} \
+            --replace-env-vars \
+              ASPNETCORE_ENVIRONMENT=Development \
+              ConnectionStrings__DefaultConnection="${{ secrets.CONNECTION_STRING }}" \
+              AdminData__Email="${{ secrets.ADMIN_EMAIL }}" \
+              AdminData__Password="${{ secrets.ADMIN_PASSWORD }}"
