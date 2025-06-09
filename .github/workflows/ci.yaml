@@ -11,9 +11,9 @@ on:
   workflow_dispatch:
 
 env:  
-  AZURE_CONTAINER_REGISTRY: acr_name  
-  CONTAINER_APP_NAME: ca_name  
-  RESOURCE_GROUP: rg_name  
+  AZURE_CONTAINER_REGISTRY: semzeridevacrpoland  
+  CONTAINER_APP_NAME: semzeri-dev-ca-poland  
+  RESOURCE_GROUP: semzeri-dev-rg-poland  
 
 jobs:
   build:
