@@ -19,6 +19,13 @@ public static class ServiceCollectionExtension
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
         
+        services.ConfigureApplicationCookie(options =>
+        {
+            options.Cookie.SecurePolicy = CookieSecurePolicy.Always; 
+            options.Cookie.SameSite = SameSiteMode.None; 
+            options.Cookie.HttpOnly = true; 
+        });
+        
         return services;
     }
 }
