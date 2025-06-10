@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5007/api/',
+  apiUrl: 'https://semzeri-dev-ca-poland.jollycoast-0d3a5640.polandcentral.azurecontainerapps.io/api/',
 };
