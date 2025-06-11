@@ -9,7 +9,7 @@ namespace Semzeri.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UrlsController(IUrlsService urlsService) : ControllerBase
+public class UrlsController(IUrlsService urlsService, IConfiguration configuration) : ControllerBase
 {
     [Authorize]
     [HttpPost]
@@ -23,7 +23,7 @@ public class UrlsController(IUrlsService urlsService) : ControllerBase
         if (userEmail == null)
             return BadRequest("Current user has no email");
         
-        var shortenedUrl = await urlsService.GenerateUrlAsync(request, HttpContext.Request.Scheme, HttpContext.Request.Host.ToString(), userEmail);
+        var shortenedUrl = await urlsService.GenerateUrlAsync(request, configuration["UrlInfo:Scheme"]!, configuration["UrlInfo:Host"]!, userEmail);
 
         return Ok(shortenedUrl);
     }

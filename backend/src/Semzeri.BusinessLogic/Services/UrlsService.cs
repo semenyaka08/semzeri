@@ -16,7 +16,6 @@ public class UrlsService (IUrlsRepository urlsRepository, IUrlShortenerService u
         var isAlreadyExist = await urlsRepository.GetUrlByOriginalUrlAsync(addRequest.OriginalUrl);
 
         if (isAlreadyExist != null) throw new UrlAlreadyShortenedException();
-        
 
         var code = await urlShortenerService.GenerateUniqueCode();
 
